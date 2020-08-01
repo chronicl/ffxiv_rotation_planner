@@ -1,38 +1,99 @@
-.App {
+:root {
+  --gcd-height: 50px;
+  --mainLine-height: 3px;
+  --tick-height: 20px;
+  --mainLine-rotationActions-left-margin: 40px
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #000 url('https://cdn.discordapp.com/attachments/189089498364117002/737718485592834068/What_are_you_doing_step_bro10.png') center center/cover;
+  height: 100vh;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* lowest layer */
+.container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ActionSelect {
+  background-color: #2F3136df;
+  padding:10px;
+  margin: 0px
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Timeline {
+  overflow-x: scroll; overflow-y: hidden; 
+  display: flex; flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.timeWrapper {
+  display: inline; background-color: #202225df
+}
+.mainLine {
+  margin: 20px; margin-bottom: 35px; margin-left: var(--mainLine-rotationActions-left-margin);
+  height: var(--mainLine-height); 
+  background-color: #fff;
+  position: relative;
+  flex-grow: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.Tick {
+  height: var(--tick-height); width: 1.5px; 
+  background-color: #fff;
+  position: absolute; top: calc(-0.5*var(--tick-height) + 0.5*var(--mainLine-height));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tickTimestamp {
+  position: absolute; bottom: -30px; transform: translateX(-50%);
+}
+
+.RotationGrid {
+  text-align: left;
+  height: 100px;
+  background-color: #46494Fdf;
+  margin: 0px;
+  padding: 0px;
+  flex-grow: 100;
+  white-space: nowrap;
+}
+
+.rotationActions {
+  position: relative; margin-top: 17px; margin-left: var(--mainLine-rotationActions-left-margin);
+}
+
+.RotationAction {
+  cursor: pointer;
+  position: absolute;
+}
+
+.Action {
+  display: inline-flex;
+  padding: 4px;
+}
+
+.actionImg{
+  height: 50px; width: 50px
+}
+
+.tooltip{
+  width: 300px;
+}
+
+
+
+.gcd {
+  height: 60px; width: 60px
+}
+
+.ogcd {
+  height: 40px; width: 40px; margin-top: 20px
 }
