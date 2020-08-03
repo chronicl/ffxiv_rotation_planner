@@ -1,12 +1,13 @@
 import React from 'react'
 import TooltipAction from './TooltipAction.js'
 
-export default function SelectAction({ action, rotation, setRotation }) {
+export default function SelectAction({ action, rotations, setRotation, focusedRotationID }) {
   const timePos = 0
   const onClick = () => { 
+    const rotation = rotations[focusedRotationID]
     let newAction = {...action}
     if (rotation.length === 0) { newAction = {...action, timePos: 0}}
-    setRotation([...rotation, newAction]) 
+    setRotation(rotations, [...rotation, newAction], focusedRotationID)
   }
 
   return (
