@@ -1,6 +1,6 @@
-- integrate cast time into timeline calculations
-- timeline focus on last added skill
+- integrate cast time into auto action insertion calculations
+- timeline focus on/scroll to last added action
 - drag and drop, variable time
-- insert at any point?
-- plus button for new rotation
+- plus button for multiple rotations +++
 - action select with more jobs and actions
+- recalculating auto action insertion based on skill/spell speed

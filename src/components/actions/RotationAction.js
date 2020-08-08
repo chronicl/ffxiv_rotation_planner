@@ -1,13 +1,72 @@
-import React from 'react'
-import Action from './Action.js'
+import React from "react";
+import Action from "./Action.js";
 
-export default function RotationAction({ action, index, rotations, setRotation, rotationID, secondToPixel }) {
-  const onClick = () => { 
-    const rotation = rotations[rotationID]
-    setRotation(rotations, [...rotation.slice(0, index)].concat([...rotation.slice(index+1)]), rotationID) }
+export default function RotationAction({
+  stateOfRotations,
+  action,
+  index,
+  rotationID,
+  updateRotations,
+  secondToPixel,
+}) {
+  const onClick = () => {
+    console.log(index);
+    updateRotations({ rotationID, type: "remove", remove: index });
+  };
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const onDrop = (e) => {
+    e.stopPropagation();
+    updateRotations({
+      rotationID,
+      type: "insert",
+      insert: { insertAt: "index", index, action: stateOfRotations.dragAction },
+    });
+    updateRotations({ type: "setDragging", setDragging: { dragging: false } });
+  };
+
+  const onDragEnter = (e) => {
+    e.stopPropagation();
+    updateRotations({
+      rotationID,
+      type: "insert",
+      insert: { insertAt: "nowhere" },
+    });
+  };
+
+  const onDragLeave = (e) => {
+    updateRotations({
+      rotationID,
+      type: "insert",
+      insert: {
+        insertAt: "end",
+        action: stateOfRotations.dragAction,
+        opacity: 0.5,
+      },
+    });
+    console.log("left");
+  };
   return (
-    <div className='RotationAction' style={{left: `calc(${action.timePos*secondToPixel}px)`}} onClick={(e) => onClick()}>
-    <Action action={action} type={action.skill_type === "Ability" ? "ogcd" : "gcd"}/>
+    <div
+      className={action.opacity === 0.5 ? "RotationPreview" : "RotationAction"}
+      style={{
+        left: `calc(${action.timePos * secondToPixel}px)`,
+        opacity: action.opacity,
+      }}
+      key={index}
+      onClick={onClick}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
+    >
+      <Action
+        action={action}
+        type={action.skill_type === "Ability" ? "ogcd" : "gcd"}
+      />
     </div>
-  )
+  );
 }

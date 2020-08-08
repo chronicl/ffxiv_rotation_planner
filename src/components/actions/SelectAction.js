@@ -1,18 +1,32 @@
-import React from 'react'
-import TooltipAction from './TooltipAction.js'
+import React from "react";
+import TooltipAction from "./TooltipAction.js";
+import Action from "./Action";
 
-export default function SelectAction({ action, rotations, setRotation, focusedRotationID }) {
-  const timePos = 0
-  const onClick = () => { 
-    const rotation = rotations[focusedRotationID]
-    let newAction = {...action}
-    if (rotation.length === 0) { newAction = {...action, timePos: 0}}
-    setRotation(rotations, [...rotation, newAction], focusedRotationID)
-  }
+export default function SelectAction({ action, updateRotations }) {
+  const onDragStart = () => {
+    updateRotations({
+      type: "setDragging",
+      setDragging: {
+        dragging: true,
+        dragAction: action,
+      },
+    });
+  };
 
+  const onDragEnd = () => {
+    updateRotations({ type: "setDragging", setDragging: { dragging: false } });
+  };
   return (
-    <div style={{display: 'inline', cursor: 'pointer'}} onClick={(e) => onClick()}>
-    <TooltipAction action={action}/>
+    <div
+      style={{ display: "inline", cursor: "pointer" }}
+      onClick={() =>
+        updateRotations({ type: "insert", insert: { insertAt: "end", action } })
+      }
+      draggable={true}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+    >
+      <TooltipAction action={action} type={"selectAction"} />
     </div>
-  )
+  );
 }

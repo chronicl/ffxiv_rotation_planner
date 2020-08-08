@@ -1,24 +1,35 @@
-import React from 'react'
-import RotationGrid from './RotationGrid.js'
-import LineTime from './LineTime.js'
-import PlusButton from './PlusButton.js';
+import React from "react";
+import RotationGrid from "./RotationGrid.js";
+import LineTime from "./LineTime.js";
 
-export default function Timeline({ rotations, setRotation, focusedRotationID, setFocusedRotationID }) {
-  const fightLength = 600;
-  const secondToPixel = 100;
-  const fightLengthInPixel = fightLength*secondToPixel
-  const rotationGrids = []
-  for (let i = 0; i < rotations.length; i++) {
-    if (focusedRotationID === i){
-      rotationGrids.push(<RotationGrid rotations={rotations} setRotation={setRotation} rotationID={i} setFocusedRotationID={setFocusedRotationID} secondToPixel={secondToPixel} fightLengthInPixel={fightLengthInPixel} focused={true}/>)}
-    else {
-      rotationGrids.push(<RotationGrid rotations={rotations} setRotation={setRotation} rotationID={i} setFocusedRotationID={setFocusedRotationID} secondToPixel={secondToPixel} fightLengthInPixel={fightLengthInPixel} focused={false}/>)
-    }
+export default function Timeline({ stateOfRotations, updateRotations }) {
+  const fightLengthInPixel =
+    stateOfRotations.fightLength * stateOfRotations.secondToPixel;
+
+  const rotationGrids = [];
+  for (
+    let rotationID = 0;
+    rotationID < stateOfRotations.rotations.length;
+    rotationID++
+  ) {
+    rotationGrids.push(
+      <RotationGrid
+        stateOfRotations={stateOfRotations}
+        rotationID={rotationID}
+        updateRotations={updateRotations}
+        secondToPixel={stateOfRotations.secondToPixel}
+        fightLengthInPixel={fightLengthInPixel}
+      />
+    );
   }
   return (
     <div className="Timeline">
-        <LineTime fightLength={fightLength} secondToPixel={secondToPixel} fightLengthInPixel={fightLengthInPixel}/>
-        {rotationGrids}
+      <LineTime
+        fightLength={stateOfRotations.fightLength}
+        secondToPixel={stateOfRotations.secondToPixel}
+        fightLengthInPixel={fightLengthInPixel}
+      />
+      {rotationGrids}
     </div>
-  )
+  );
 }
