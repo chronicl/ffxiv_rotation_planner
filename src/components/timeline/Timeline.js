@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import RotationGrid from "./RotationGrid.js";
 import LineTime from "./LineTime.js";
 
-export default function Timeline({ stateOfRotations, updateRotations }) {
-  const fightLengthInPixel =
-    stateOfRotations.fightLength * stateOfRotations.secondToPixel;
+export default function Timeline({
+  stateOfRotations,
+  updateRotations,
+  settings,
+}) {
+  const timelineRef = useRef(null);
 
   const rotationGrids = [];
   for (
@@ -17,18 +20,14 @@ export default function Timeline({ stateOfRotations, updateRotations }) {
         stateOfRotations={stateOfRotations}
         rotationID={rotationID}
         updateRotations={updateRotations}
-        secondToPixel={stateOfRotations.secondToPixel}
-        fightLengthInPixel={fightLengthInPixel}
+        settings={settings}
+        timelineRef={timelineRef}
       />
     );
   }
   return (
-    <div className="Timeline">
-      <LineTime
-        fightLength={stateOfRotations.fightLength}
-        secondToPixel={stateOfRotations.secondToPixel}
-        fightLengthInPixel={fightLengthInPixel}
-      />
+    <div className="Timeline" ref={timelineRef}>
+      <LineTime settings={settings} />
       {rotationGrids}
     </div>
   );

@@ -8,13 +8,17 @@ export default function JobSelect({ currentJob, setCurrentJob }) {
   return (
     <div className="JobSelect">
       <a
-        href="#"
+        href="/#"
         className="jobSelectButton"
         onClick={() => {
           setOpen(!open);
         }}
       >
-        <img src={jobIcons[currentJob]} className="jobSelectImg" />
+        <img
+          src={jobIcons[currentJob]}
+          className="jobSelectImg"
+          alt={currentJob}
+        />
       </a>
       {open && (
         <JobSelectMenu setCurrentJob={setCurrentJob} setOpen={setOpen} />

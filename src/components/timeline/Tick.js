@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export default function TimeTick( { time, secondToPixel } ) {
+export default function TimeTick({ time, secondToPixel }) {
   // time (seconds) to pixel
-  const pixel = time * secondToPixel
+  const pixel = time * secondToPixel;
   return (
     <div>
-    <div className='Tick' style={{left: pixel}}/>
-    <div className='tickTimestamp' style={{left: pixel}}>{time}</div>
+      <div className="Tick" style={{ left: pixel }} />
+      <div className="tickTimestamp" style={{ left: pixel }}>
+        {time % 2 === 0 ? time : []}
+      </div>
     </div>
-  )
+  );
 }

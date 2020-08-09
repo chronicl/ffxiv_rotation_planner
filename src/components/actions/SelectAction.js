@@ -1,6 +1,5 @@
 import React from "react";
 import TooltipAction from "./TooltipAction.js";
-import Action from "./Action";
 
 export default function SelectAction({ action, updateRotations }) {
   const onDragStart = () => {
@@ -20,7 +19,10 @@ export default function SelectAction({ action, updateRotations }) {
     <div
       style={{ display: "inline", cursor: "pointer" }}
       onClick={() =>
-        updateRotations({ type: "insert", insert: { insertAt: "end", action } })
+        updateRotations({
+          type: "insert",
+          insert: { insertAt: "index", index: "end", action },
+        })
       }
       draggable={true}
       onDragStart={onDragStart}

@@ -6,45 +6,33 @@ export default function RotationGrid({
   stateOfRotations,
   rotationID,
   updateRotations,
-  secondToPixel,
-  fightLengthInPixel,
-  dragAction,
-  setDragAction,
+  settings,
+  timelineRef,
 }) {
   const onClick = () => {
     updateRotations({ rotationID, type: "focusRotation" });
   };
 
-  const onDrop = () => {
-    updateRotations({
-      rotationID,
-      type: "insert",
-      insert: { insertAt: "end", action: stateOfRotations.dragAction },
-    });
-  };
-
-  const onDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const onDragEnter = () => {
+  const onDrop = (e) => {
     updateRotations({
       rotationID,
       type: "insert",
       insert: {
-        insertAt: "end",
+        insertAt: "pixel",
+        pixel:
+          e.pageX -
+          e.target.offsetLeft -
+          marginLeft +
+          timelineRef.current.scrollLeft,
+        secondToPixel: settings.secondToPixel,
         action: stateOfRotations.dragAction,
-        opacity: 0.5,
       },
     });
   };
 
-  const onDragLeave = (e) => {
-    updateRotations({
-      rotationID,
-      type: "insert",
-      insert: { insertAt: "nowhere" },
-    });
+  const marginLeft = 60;
+  const onDragOver = (e) => {
+    e.preventDefault();
   };
 
   const rotationJSX = [];
@@ -58,7 +46,7 @@ export default function RotationGrid({
         index={index}
         rotationID={rotationID}
         updateRotations={updateRotations}
-        secondToPixel={secondToPixel}
+        secondToPixel={settings.secondToPixel}
       />
     );
   }
@@ -68,7 +56,9 @@ export default function RotationGrid({
         stateOfRotations.dragging ? "RotationGrid dragOver" : "RotationGrid"
       }
       style={{
-        width: fightLengthInPixel,
+        width:
+          settings.fightLength * settings.secondToPixel +
+          2 * settings.timelineMargin,
         backgroundColor:
           rotationID === stateOfRotations.focusedRotationID
             ? "#46494Fef"
@@ -77,10 +67,13 @@ export default function RotationGrid({
       onClick={onClick}
       onDragOver={onDragOver}
       onDrop={onDrop}
-      onDragEnter={onDragEnter}
-      onDragLeave={onDragLeave}
     >
-      <div className="rotationActions">{rotationJSX}</div>
+      <div
+        className="rotationActions"
+        style={{ marginLeft: settings.timelineMargin }}
+      >
+        {rotationJSX}
+      </div>
     </div>
   );
 }

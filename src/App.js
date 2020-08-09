@@ -1,24 +1,14 @@
-import React, { useState, useReducer, useRef } from "react";
+import React, { useReducer } from "react";
 import "./App.css";
 
 // components
-import ActionSelect from "./components/SelectSettings/ActionSelect.js";
+import ActionSelect from "./components/ActionSelect.js";
 import Timeline from "./components/timeline/Timeline.js";
 import MinusPlusButtons from "./components/timeline/MinusPlusButtons.js";
+import Settings from "./components/settings/Settings";
 
 // functions
 import { updateRotationsReducer } from "./functions/updateRotationsReducer";
-
-// updates is an object with the attributes rotationID, type and depending on the type one further attribute may be needed.
-// for example if the type is 'insert' then the insert attribute is required.
-// { rotationID: ID of rotation that is to be changed; if omitted = focusedRotationID (int)
-//   type: 'insert' || 'remove' || 'addRotation' || 'removeRotation' || 'focusRotation'  || 'fightLength' || 'secondToPixel' || 'dragging' || 'dragAction' || 'dragPreview' (str)
-//   insert: {insertAt: 'index' || 'pixel' || 'end' || 'nowhere' (str), posIndex || posPixel (int), action (action object)}
-//   remove: index (int)
-//   fightLength: duration of fight in seconds (int)
-//   secondToPixel: how many pixels are one second on the timeline (int)
-//   setDragging: { dragging: true || false, dragAction: action object }
-// }
 
 function App() {
   // UPDATER OF ALL ROTATIONS see ./functions/updateRotationsReducer for how to update
@@ -31,20 +21,48 @@ function App() {
     {
       rotations: [[]],
       focusedRotationID: 0,
-      fightLength: 600,
-      secondToPixel: 100,
+      removeDragActionOnDrop: null,
     }
   );
 
-  const actionSelectRef = useRef(null);
+  const settingsReducer = (settings, updates) => {
+    let newSettings = { ...settings };
+    switch (updates.type) {
+      case "currentJob":
+        newSettings["currentJob"] = updates.currentJob;
+        break;
 
-  console.log("render");
+      case "fightLength":
+        newSettings["fightLength"] = updates.fightLength;
+        break;
+
+      case "secondToPixel":
+        console.log(updates.secondToPixel);
+        newSettings["secondToPixel"] = updates.secondToPixel;
+        break;
+      default:
+        throw new Error("no such update exists for settings");
+    }
+    return newSettings;
+  };
+  const [settings, updateSettings] = useReducer(settingsReducer, {
+    currentJob: "drk",
+    fightLength: 600,
+    secondToPixel: 100,
+    timelineMargin: 60,
+  });
+
   return (
     <div className="container">
-      <ActionSelect updateRotations={updateRotations} />
+      <Settings settings={settings} updateSettings={updateSettings} />
+      <ActionSelect
+        updateRotations={updateRotations}
+        currentJob={settings.currentJob}
+      />
       <Timeline
         stateOfRotations={stateOfRotations}
         updateRotations={updateRotations}
+        settings={settings}
       />
       <MinusPlusButtons updateRotations={updateRotations} />
     </div>

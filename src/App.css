@@ -36,10 +36,26 @@ body {
   text-align: center;
 }
 
+.Settings {
+  padding-top: 10px;
+  background-color: #2f3136;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TimelineSettings {
+  margin-left: 20px;
+}
+
+.timelineSettingsInput {
+  margin-right: 10px;
+  width: 100px;
+}
+
 .ActionSelect {
   background-color: #2f3136;
   z-index: 3;
-  padding: 10px;
   margin: 0px;
   flex-direction: column;
   display: flex;
@@ -60,9 +76,8 @@ body {
   background-color: #202225df;
 }
 .mainLine {
-  margin: 20px;
+  margin-top: 20px;
   margin-bottom: 35px;
-  margin-left: var(--mainLine-rotationActions-left-margin);
   height: var(--mainLine-height);
   background-color: #fff;
   position: relative;
@@ -85,7 +100,7 @@ body {
 
 .RotationGrid {
   text-align: left;
-  height: 100px;
+  height: 80px;
   margin: 0px;
   padding: 0px;
   flex-grow: 100;
@@ -93,26 +108,19 @@ body {
   border: 1px #000 solid;
   display: flex;
 }
-.RotationGrid.dragOver *:not(:rotationaction) {
-  pointer-events: none;
+.RotationGrid.dragOver * {
 }
 
 .rotationActions {
   flex-grow: 100;
   position: relative;
-  margin-top: 17px;
-  margin-left: var(--mainLine-rotationActions-left-margin);
+  margin-top: 13px;
 }
 
 .RotationAction {
   cursor: pointer;
   position: absolute;
   transform: translateX(-50%);
-}
-.RotationPreview {
-  position: absolute;
-  transform: translateX(-50%);
-  pointer-events: none;
 }
 
 .Action {
@@ -123,6 +131,7 @@ body {
 .actionImg {
   height: 40px;
   width: 40px;
+  border-radius: 20%;
 }
 
 .tooltip {
@@ -130,14 +139,14 @@ body {
 }
 
 .gcd {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
 }
 
 .ogcd {
-  height: 40px;
-  width: 40px;
-  margin-top: 20px;
+  height: 35px;
+  width: 35px;
+  margin-top: 15px;
 }
 
 .selectAction {

@@ -3,7 +3,7 @@ export const setRotationWithTimeline = (rotation) => {
     return [];
   }
   const rotationWithTimeline = [];
-  if (!rotation[0].timePos) {
+  if (!rotation[0].timePos || !rotation[0].isPositioned) {
     rotation[0] = { ...rotation[0], timePos: 0, isPositioned: true };
   }
   for (const [index, action] of rotation.entries()) {

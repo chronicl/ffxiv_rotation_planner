@@ -11,57 +11,47 @@ export default function RotationAction({
 }) {
   const onClick = () => {
     console.log(index);
-    updateRotations({ rotationID, type: "remove", remove: index });
-  };
-
-  const onDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const onDrop = (e) => {
-    e.stopPropagation();
     updateRotations({
       rotationID,
-      type: "insert",
-      insert: { insertAt: "index", index, action: stateOfRotations.dragAction },
-    });
-    updateRotations({ type: "setDragging", setDragging: { dragging: false } });
-  };
-
-  const onDragEnter = (e) => {
-    e.stopPropagation();
-    updateRotations({
-      rotationID,
-      type: "insert",
-      insert: { insertAt: "nowhere" },
+      type: "remove",
+      remove: { type: "index", index },
     });
   };
 
-  const onDragLeave = (e) => {
+  const onDragStart = () => {
     updateRotations({
-      rotationID,
-      type: "insert",
-      insert: {
-        insertAt: "end",
-        action: stateOfRotations.dragAction,
-        opacity: 0.5,
+      type: "setDragging",
+      setDragging: {
+        dragging: true,
+        dragAction: action,
+        removeDragActionOnDrop: rotationID,
       },
     });
-    console.log("left");
+  };
+
+  const onDragEnd = () => {
+    updateRotations({
+      type: "setDragging",
+      setDragging: { dragging: false },
+    });
+    updateRotations({
+      rotationID,
+      type: "insert",
+      insert: { insertAt: "cleanUp" },
+    });
   };
   return (
     <div
-      className={action.opacity === 0.5 ? "RotationPreview" : "RotationAction"}
+      className="RotationAction"
       style={{
         left: `calc(${action.timePos * secondToPixel}px)`,
-        opacity: action.opacity,
+        opacity: action.opacity ? action.opacity : 1,
       }}
       key={index}
       onClick={onClick}
-      onDragOver={onDragOver}
-      onDrop={onDrop}
-      onDragEnter={onDragEnter}
-      onDragLeave={onDragLeave}
+      draggable={true}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
     >
       <Action
         action={action}
