@@ -11,22 +11,6 @@ export default function RotationGrid({
   dragAction,
   setDragAction,
 }) {
-  const rotationJSX = [];
-  for (const [index, action] of stateOfRotations.rotations[
-    rotationID
-  ].entries()) {
-    rotationJSX.push(
-      <RotationAction
-        stateOfRotations={stateOfRotations}
-        action={action}
-        index={index}
-        rotationID={rotationID}
-        updateRotations={updateRotations}
-        secondToPixel={secondToPixel}
-      />
-    );
-  }
-
   const onClick = () => {
     updateRotations({ rotationID, type: "focusRotation" });
   };
@@ -62,6 +46,22 @@ export default function RotationGrid({
       insert: { insertAt: "nowhere" },
     });
   };
+
+  const rotationJSX = [];
+  for (const [index, action] of stateOfRotations.rotations[
+    rotationID
+  ].entries()) {
+    rotationJSX.push(
+      <RotationAction
+        stateOfRotations={stateOfRotations}
+        action={action}
+        index={index}
+        rotationID={rotationID}
+        updateRotations={updateRotations}
+        secondToPixel={secondToPixel}
+      />
+    );
+  }
   return (
     <div
       className={

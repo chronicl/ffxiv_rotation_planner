@@ -91,12 +91,14 @@ body {
   flex-grow: 100;
   white-space: nowrap;
   border: 1px #000 solid;
+  display: flex;
 }
 .RotationGrid.dragOver *:not(:rotationaction) {
   pointer-events: none;
 }
 
 .rotationActions {
+  flex-grow: 100;
   position: relative;
   margin-top: 17px;
   margin-left: var(--mainLine-rotationActions-left-margin);
