@@ -11,6 +11,7 @@
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms;
+  --dot-border-shadow: 3px;
 }
 
 * {
@@ -21,8 +22,8 @@
 
 html,
 body {
-  background: #000
-    url("https://cdn.discordapp.com/attachments/189089498364117002/737718485592834068/What_are_you_doing_step_bro10.png")
+  background: #000 url("https://wallpaperset.com/w/full/7/5/1/508204.jpg")
+    /* url("https://cdn.discordapp.com/attachments/189089498364117002/737718485592834068/What_are_you_doing_step_bro10.png") */
     center center/cover;
   height: 100vh;
   color: #fff;
@@ -38,19 +39,11 @@ body {
 
 .Settings {
   padding-top: 10px;
+  padding-bottom: 20px;
   background-color: #2f3136;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.TimelineSettings {
-  margin-left: 20px;
-}
-
-.timelineSettingsInput {
-  margin-right: 10px;
-  width: 100px;
 }
 
 .ActionSelect {
@@ -112,7 +105,6 @@ body {
 }
 
 .rotationActions {
-  flex-grow: 100;
   position: relative;
   margin-top: 13px;
 }
@@ -299,4 +291,145 @@ body {
 .jobMenu-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
+}
+.TimelineSettings {
+  margin-left: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3f4146;
+  position: relative;
+}
+
+.timelineSettingsInput {
+  border-radius: 5px;
+  padding-left: 2px;
+  margin-right: 4px;
+  margin-left: 4px;
+  width: 100px;
+}
+.submitButton {
+  margin-top: 5px;
+  border-radius: 5px;
+  height: 25px;
+  width: 70px;
+  background-color: #ccc;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.EditSettings {
+  position: relative;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: #3f4146;
+}
+
+.InsertTime {
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f4146;
+  width: 70px;
+  height: 30px;
+  margin-left: 10px;
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+.insertTimeAni-enter {
+  transform: translateX(-80px);
+  transition: transform 500ms;
+  opacity: 1;
+}
+
+.insertTimeAni-enter-active {
+  transform: translateX(0%);
+  opacity: 1;
+}
+.insertTimeAni-enter-done {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.insertTimeAni-exit {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: transform 500ms;
+}
+
+.insertTimeAni-exit-active {
+  opacity: 1;
+  transform: translateX(-80px);
+}
+
+.insertTimeAni-exit-done {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+.editSettingsDot {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin: 7px;
+  margin-right: 4px;
+  background-color: #b2c2bf;
+  transform: scale(1, 1);
+  cursor: pointer;
+}
+
+.dotAnimation-enter {
+  transition: box-shadow 0.3s;
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.dotAnimation-enter-active {
+  box-shadow: 0px 0px 0px var(--dot-border-shadow) #eaece5;
+}
+
+.dotAnimation-enter-done {
+  box-shadow: 0px 0px 0px var(--dot-border-shadow) #eaece5;
+}
+.dotAnimation-appear {
+  box-shadow: 0px 0px 0px var(--dot-border-shadow) #eaece5;
+}
+
+.dotAnimation-exit {
+  transition: box-shadow 0.3s;
+  box-shadow: 0px 0px 0px var(--dot-border-shadow) #eaece5;
+}
+
+.dotAnimation-exit-active {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.dotAnimation-exit-done {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.Info {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.Info svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.infoTooltip {
+  width: 300px;
 }

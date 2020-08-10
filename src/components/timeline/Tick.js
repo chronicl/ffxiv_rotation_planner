@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function TimeTick({ time, secondToPixel }) {
+export default function TimeTick({ time, secondToPixel, prePullTime }) {
   // time (seconds) to pixel
-  const pixel = time * secondToPixel;
+  const pixel = (time - prePullTime) * secondToPixel;
   return (
     <div>
       <div className="Tick" style={{ left: pixel }} />

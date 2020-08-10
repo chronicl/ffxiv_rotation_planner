@@ -2,14 +2,21 @@ export const setRotationWithTimeline = (rotation) => {
   if (rotation.length === 0) {
     return [];
   }
+
   const rotationWithTimeline = [];
-  if (!rotation[0].timePos || !rotation[0].isPositioned) {
-    rotation[0] = { ...rotation[0], timePos: 0, isPositioned: true };
+  // insert first action at custom time or auto time
+  if (rotation[0].isPositioned) {
+    rotationWithTimeline.push({ ...rotation[0] });
+  } else {
+    rotationWithTimeline.push({ ...rotation[0], timePos: 0 });
   }
-  for (const [index, action] of rotation.entries()) {
+
+  // insert all other actions according to their settings/types
+  for (const [i, action] of rotation.slice(1).entries()) {
+    const index = i + 1;
     let newAction = { ...action };
-    // creating actions time position if not already existent
-    if ((!action.timePos && action.timePos !== 0) || !action.isPositioned) {
+    // creating actions time position if not manually positioned
+    if (!action.isPositioned) {
       if (action.isGCD) {
         const previousAction = rotationWithTimeline[index - 1];
         if (previousAction.isGCD) {

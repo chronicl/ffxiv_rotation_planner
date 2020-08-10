@@ -28,7 +28,7 @@ export default function Action({ action }) {
         {action.skill_type === "Weaponskill" || action.skill_type === "Spell"
           ? "GCD: "
           : ""}
-        {action.skill_type === "Ability" ? "oGCD: " : ""} {action.name} <br />
+        {action.skill_type === "Ability" ? "oGCD: " : ""} {action.name} <br/>
         {action_effect}
         <p style={{ color: "green", display: "inline" }}>Recast: </p>
         {action.recast} | {"Cast: " + action.cast}

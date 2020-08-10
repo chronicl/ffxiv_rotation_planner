@@ -37,9 +37,25 @@ function App() {
         break;
 
       case "secondToPixel":
-        console.log(updates.secondToPixel);
         newSettings["secondToPixel"] = updates.secondToPixel;
         break;
+
+      case "editSetting":
+        newSettings["editSetting"] = updates.editSetting;
+        break;
+
+      case "prePullTime":
+        newSettings["prePullTime"] = updates.prePullTime;
+        break;
+
+      case "insertTime":
+        newSettings["insertTime"] = updates.insertTime;
+        break;
+
+      // case "showInsertTime":
+      //   newSettings["showInsertTime"] = updates.insertTimeShow;
+      //   break;
+
       default:
         throw new Error("no such update exists for settings");
     }
@@ -47,8 +63,10 @@ function App() {
   };
   const [settings, updateSettings] = useReducer(settingsReducer, {
     currentJob: "drk",
+    editSetting: "auto",
     fightLength: 600,
-    secondToPixel: 100,
+    secondToPixel: 75,
+    prePullTime: 0,
     timelineMargin: 60,
   });
 
@@ -63,6 +81,7 @@ function App() {
         stateOfRotations={stateOfRotations}
         updateRotations={updateRotations}
         settings={settings}
+        updateSettings={updateSettings}
       />
       <MinusPlusButtons updateRotations={updateRotations} />
     </div>

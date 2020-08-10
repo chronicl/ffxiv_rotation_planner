@@ -6,6 +6,7 @@ export default function Timeline({
   stateOfRotations,
   updateRotations,
   settings,
+  updateSettings,
 }) {
   const timelineRef = useRef(null);
 
@@ -21,6 +22,7 @@ export default function Timeline({
         rotationID={rotationID}
         updateRotations={updateRotations}
         settings={settings}
+        updateSettings={updateSettings}
         timelineRef={timelineRef}
       />
     );

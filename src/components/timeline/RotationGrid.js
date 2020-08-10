@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RotationAction from "../actions/RotationAction.js";
 
 // rotation is list of Actions
@@ -7,8 +7,11 @@ export default function RotationGrid({
   rotationID,
   updateRotations,
   settings,
+  updateSettings,
   timelineRef,
 }) {
+  const [counter, setCounter] = useState(0);
+
   const onClick = () => {
     updateRotations({ rotationID, type: "focusRotation" });
   };
@@ -22,17 +25,29 @@ export default function RotationGrid({
         pixel:
           e.pageX -
           e.target.offsetLeft -
-          marginLeft +
+          settings.timelineMargin +
           timelineRef.current.scrollLeft,
         secondToPixel: settings.secondToPixel,
         action: stateOfRotations.dragAction,
+        isPositioned: settings.editSetting === "manual",
       },
     });
   };
 
-  const marginLeft = 60;
   const onDragOver = (e) => {
     e.preventDefault();
+    setCounter(counter + 1);
+    if (counter % 50 === 0 && settings.editSetting === "manual") {
+      updateSettings({
+        type: "insertTime",
+        insertTime:
+          (e.pageX -
+            e.target.offsetLeft -
+            settings.timelineMargin +
+            timelineRef.current.scrollLeft) /
+          settings.secondToPixel,
+      });
+    }
   };
 
   const rotationJSX = [];
@@ -50,6 +65,7 @@ export default function RotationGrid({
       />
     );
   }
+
   return (
     <div
       className={
@@ -67,6 +83,12 @@ export default function RotationGrid({
       onClick={onClick}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      // onDragEnter={() =>
+      //   updateSettings({ type: "showInsertTime", showInsertTime: true })
+      // }
+      // onDragLeave={() =>
+      //   updateSettings({ type: "showInsertTime", showInsertTime: false })
+      // }
     >
       <div
         className="rotationActions"

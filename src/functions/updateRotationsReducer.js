@@ -27,16 +27,11 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
       const newAction = {
         ...updates.insert.action,
         opacity: updates.insert.opacity ? updates.insert.opacity : 1,
-        timePos: updates.insert.timePos,
-        isPositioned: updates.insert.isPositioned ? true : false,
         id: uuid(),
       };
 
-      console.log(stateOfRotations.removeDragActionOnDrop);
-
       // to handle moving an action between/in timelines
       if (stateOfRotations.removeDragActionOnDrop !== null) {
-        console.log("trying");
         for (const [index, action] of newRotations[
           stateOfRotations.removeDragActionOnDrop
         ].entries()) {
@@ -82,14 +77,16 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
           break;
 
         case "pixel":
-          console.log(newRotations[id]);
-          console.log(stateOfRotations.rotations[id]);
+          if (updates.insert.isPositioned) {
+            newAction["timePos"] =
+              updates.insert.pixel / updates.insert.secondToPixel;
+            newAction["isPositioned"] = true;
+          }
           for (const [index, action] of newRotations[id].entries()) {
             if (
               updates.insert.pixel <
               action.timePos * updates.insert.secondToPixel
             ) {
-              console.log(index);
               newRotations[id] = setRotationWithTimeline([
                 ...rotation.slice(0, index),
                 newAction,
