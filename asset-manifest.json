@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ffxiv_rotation_planner/static/css/main.b0454059.chunk.css",
-    "main.js": "/ffxiv_rotation_planner/static/js/main.18f45194.chunk.js",
-    "main.js.map": "/ffxiv_rotation_planner/static/js/main.18f45194.chunk.js.map",
+    "main.js": "/ffxiv_rotation_planner/static/js/main.c13055b5.chunk.js",
+    "main.js.map": "/ffxiv_rotation_planner/static/js/main.c13055b5.chunk.js.map",
     "runtime-main.js": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js",
     "runtime-main.js.map": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js.map",
     "static/js/2.20c8f741.chunk.js": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js",
     "static/js/2.20c8f741.chunk.js.map": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.map",
     "index.html": "/ffxiv_rotation_planner/index.html",
-    "precache-manifest.b9d98c812b19139c210fd45a80876439.js": "/ffxiv_rotation_planner/precache-manifest.b9d98c812b19139c210fd45a80876439.js",
+    "precache-manifest.10feba6d87121ddd88ca31ad35da3665.js": "/ffxiv_rotation_planner/precache-manifest.10feba6d87121ddd88ca31ad35da3665.js",
     "service-worker.js": "/ffxiv_rotation_planner/service-worker.js",
     "static/css/main.b0454059.chunk.css.map": "/ffxiv_rotation_planner/static/css/main.b0454059.chunk.css.map",
     "static/js/2.20c8f741.chunk.js.LICENSE.txt": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.LICENSE.txt",
@@ -41,6 +41,6 @@
     "static/js/runtime-main.6ee7620d.js",
     "static/js/2.20c8f741.chunk.js",
     "static/css/main.b0454059.chunk.css",
-    "static/js/main.18f45194.chunk.js"
+    "static/js/main.c13055b5.chunk.js"
   ]
 }
