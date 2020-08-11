@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ffxiv_rotation_planner/static/css/main.c760798d.chunk.css",
-    "main.js": "/ffxiv_rotation_planner/static/js/main.31666223.chunk.js",
-    "main.js.map": "/ffxiv_rotation_planner/static/js/main.31666223.chunk.js.map",
+    "main.css": "/ffxiv_rotation_planner/static/css/main.a0799fec.chunk.css",
+    "main.js": "/ffxiv_rotation_planner/static/js/main.e0fc0b3b.chunk.js",
+    "main.js.map": "/ffxiv_rotation_planner/static/js/main.e0fc0b3b.chunk.js.map",
     "runtime-main.js": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js",
     "runtime-main.js.map": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js.map",
     "static/js/2.20c8f741.chunk.js": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js",
     "static/js/2.20c8f741.chunk.js.map": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.map",
     "index.html": "/ffxiv_rotation_planner/index.html",
-    "precache-manifest.65b0f951cfcb88c2936bc3a7a4602f59.js": "/ffxiv_rotation_planner/precache-manifest.65b0f951cfcb88c2936bc3a7a4602f59.js",
+    "precache-manifest.6c4c5228a360cd8b3a49e43741ad7341.js": "/ffxiv_rotation_planner/precache-manifest.6c4c5228a360cd8b3a49e43741ad7341.js",
     "service-worker.js": "/ffxiv_rotation_planner/service-worker.js",
-    "static/css/main.c760798d.chunk.css.map": "/ffxiv_rotation_planner/static/css/main.c760798d.chunk.css.map",
+    "static/css/main.a0799fec.chunk.css.map": "/ffxiv_rotation_planner/static/css/main.a0799fec.chunk.css.map",
     "static/js/2.20c8f741.chunk.js.LICENSE.txt": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.LICENSE.txt",
     "static/media/arrow.48ae6434.svg": "/ffxiv_rotation_planner/static/media/arrow.48ae6434.svg",
     "static/media/ast.png": "/ffxiv_rotation_planner/static/media/ast.f2221c9b.png",
@@ -40,7 +40,7 @@
   "entrypoints": [
     "static/js/runtime-main.6ee7620d.js",
     "static/js/2.20c8f741.chunk.js",
-    "static/css/main.c760798d.chunk.css",
-    "static/js/main.31666223.chunk.js"
+    "static/css/main.a0799fec.chunk.css",
+    "static/js/main.e0fc0b3b.chunk.js"
   ]
 }
