@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fb58bd5d4d7b3d8ec0fbb214bcfedec9",
+    "revision": "9c704ea96644970437dee66877f9da97",
     "url": "/ffxiv_rotation_planner/index.html"
   },
   {
-    "revision": "f4e8ff2df075e611724f",
-    "url": "/ffxiv_rotation_planner/static/css/main.b0454059.chunk.css"
+    "revision": "b4acc2acdacd329195a0",
+    "url": "/ffxiv_rotation_planner/static/css/main.c760798d.chunk.css"
   },
   {
     "revision": "5373b9aef1c215c5b08b",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f4e8ff2df075e611724f",
-    "url": "/ffxiv_rotation_planner/static/js/main.c13055b5.chunk.js"
+    "revision": "b4acc2acdacd329195a0",
+    "url": "/ffxiv_rotation_planner/static/js/main.31666223.chunk.js"
   },
   {
     "revision": "84f8a0641e62f5d0ac5c",

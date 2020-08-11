@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ffxiv_rotation_planner/precache-manifest.10feba6d87121ddd88ca31ad35da3665.js"
+  "/ffxiv_rotation_planner/precache-manifest.65b0f951cfcb88c2936bc3a7a4602f59.js"
 );
 
 self.addEventListener('message', (event) => {
