@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ffxiv_rotation_planner/static/css/main.f370f31b.chunk.css",
-    "main.js": "/ffxiv_rotation_planner/static/js/main.e0fc0b3b.chunk.js",
-    "main.js.map": "/ffxiv_rotation_planner/static/js/main.e0fc0b3b.chunk.js.map",
+    "main.css": "/ffxiv_rotation_planner/static/css/main.695cae5f.chunk.css",
+    "main.js": "/ffxiv_rotation_planner/static/js/main.bab08f2f.chunk.js",
+    "main.js.map": "/ffxiv_rotation_planner/static/js/main.bab08f2f.chunk.js.map",
     "runtime-main.js": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js",
     "runtime-main.js.map": "/ffxiv_rotation_planner/static/js/runtime-main.6ee7620d.js.map",
-    "static/js/2.20c8f741.chunk.js": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js",
-    "static/js/2.20c8f741.chunk.js.map": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.map",
+    "static/js/2.264153e4.chunk.js": "/ffxiv_rotation_planner/static/js/2.264153e4.chunk.js",
+    "static/js/2.264153e4.chunk.js.map": "/ffxiv_rotation_planner/static/js/2.264153e4.chunk.js.map",
     "index.html": "/ffxiv_rotation_planner/index.html",
-    "precache-manifest.af45b37d7e4f837405c4a258cfa00d93.js": "/ffxiv_rotation_planner/precache-manifest.af45b37d7e4f837405c4a258cfa00d93.js",
+    "precache-manifest.f3069d1a7e06c483380d8736365cbf89.js": "/ffxiv_rotation_planner/precache-manifest.f3069d1a7e06c483380d8736365cbf89.js",
     "service-worker.js": "/ffxiv_rotation_planner/service-worker.js",
-    "static/css/main.f370f31b.chunk.css.map": "/ffxiv_rotation_planner/static/css/main.f370f31b.chunk.css.map",
-    "static/js/2.20c8f741.chunk.js.LICENSE.txt": "/ffxiv_rotation_planner/static/js/2.20c8f741.chunk.js.LICENSE.txt",
+    "static/css/main.695cae5f.chunk.css.map": "/ffxiv_rotation_planner/static/css/main.695cae5f.chunk.css.map",
+    "static/js/2.264153e4.chunk.js.LICENSE.txt": "/ffxiv_rotation_planner/static/js/2.264153e4.chunk.js.LICENSE.txt",
     "static/media/arrow.48ae6434.svg": "/ffxiv_rotation_planner/static/media/arrow.48ae6434.svg",
     "static/media/ast.png": "/ffxiv_rotation_planner/static/media/ast.f2221c9b.png",
     "static/media/blm.png": "/ffxiv_rotation_planner/static/media/blm.ecd6a6c5.png",
@@ -39,8 +39,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.6ee7620d.js",
-    "static/js/2.20c8f741.chunk.js",
-    "static/css/main.f370f31b.chunk.css",
-    "static/js/main.e0fc0b3b.chunk.js"
+    "static/js/2.264153e4.chunk.js",
+    "static/css/main.695cae5f.chunk.css",
+    "static/js/main.bab08f2f.chunk.js"
   ]
 }
