@@ -1,8 +1,10 @@
 import React from "react";
+import { useStore } from "../../functions/store";
 
-export default function TimeTick({ time, secondToPixel, prePullTime }) {
-  // time (seconds) to pixel
-  const pixel = (time - prePullTime) * secondToPixel;
+export default function TimeTick({ time }) {
+  const secondToPixel = useStore((state) => state.secondToPixel);
+  const startTime = useStore((state) => state.startTime);
+  const pixel = (time - startTime) * secondToPixel;
   return (
     <div>
       <div className="Tick" style={{ left: pixel }} />

@@ -1,32 +1,22 @@
 import React from "react";
 import TooltipAction from "./TooltipAction.js";
+import { useStore } from "../../functions/store";
 
-export default function SelectAction({ action, updateRotations }) {
+export default function SelectAction({ action }) {
+  const setDragAction = useStore((state) => state.setDragAction);
   const onDragStart = () => {
-    updateRotations({
-      type: "setDragging",
-      setDragging: {
-        dragging: true,
-        dragAction: action,
-      },
-    });
+    setDragAction(action);
   };
 
-  const onDragEnd = () => {
-    updateRotations({ type: "setDragging", setDragging: { dragging: false } });
-  };
+  const updateRotations = useStore((state) => state.updateRotations);
   return (
     <div
       style={{ display: "inline", cursor: "pointer" }}
       onClick={() =>
-        updateRotations({
-          type: "insert",
-          insert: { insertAt: "index", index: "end", action },
-        })
+        updateRotations("insert", { insertAt: "index", index: "end", action })
       }
       draggable={true}
       onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
     >
       <TooltipAction action={action} type={"selectAction"} />
     </div>

@@ -2,13 +2,14 @@ import React from "react";
 import jobActions from "../database/jobs/jobsActions";
 import roleActions from "../database/roles/roleActions";
 import SelectAction from "./actions/SelectAction.js";
+import { useStore } from "../functions/store";
 
-export default function ActionSelect({ updateRotations, currentJob }) {
+export default function ActionSelect() {
+  const currentJob = useStore((state) => state.currentJob);
+
   const actionsJob = [];
   for (let action of jobActions[currentJob]) {
-    actionsJob.push(
-      <SelectAction action={action} updateRotations={updateRotations} />
-    );
+    actionsJob.push(<SelectAction action={action} />);
   }
 
   let role;
@@ -30,9 +31,7 @@ export default function ActionSelect({ updateRotations, currentJob }) {
 
   const actionsRole = [];
   for (let action of roleActions[role]) {
-    actionsRole.push(
-      <SelectAction action={action} updateRotations={updateRotations} />
-    );
+    actionsRole.push(<SelectAction action={action} />);
   }
 
   return (

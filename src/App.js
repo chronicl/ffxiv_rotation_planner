@@ -48,14 +48,6 @@ function App() {
         newSettings["prePullTime"] = updates.prePullTime;
         break;
 
-      case "insertTime":
-        newSettings["insertTime"] = updates.insertTime;
-        break;
-
-      // case "showInsertTime":
-      //   newSettings["showInsertTime"] = updates.insertTimeShow;
-      //   break;
-
       default:
         throw new Error("no such update exists for settings");
     }

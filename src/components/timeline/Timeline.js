@@ -1,35 +1,21 @@
 import React, { useRef } from "react";
 import RotationGrid from "./RotationGrid.js";
 import LineTime from "./LineTime.js";
+import { useStore } from "../../functions/store";
 
-export default function Timeline({
-  stateOfRotations,
-  updateRotations,
-  settings,
-  updateSettings,
-}) {
+export default function Timeline() {
   const timelineRef = useRef(null);
 
+  const rotationsLength = useStore((state) => state.rotations).length;
   const rotationGrids = [];
-  for (
-    let rotationID = 0;
-    rotationID < stateOfRotations.rotations.length;
-    rotationID++
-  ) {
+  for (let rotationID = 0; rotationID < rotationsLength; rotationID++) {
     rotationGrids.push(
-      <RotationGrid
-        stateOfRotations={stateOfRotations}
-        rotationID={rotationID}
-        updateRotations={updateRotations}
-        settings={settings}
-        updateSettings={updateSettings}
-        timelineRef={timelineRef}
-      />
+      <RotationGrid rotationID={rotationID} timelineRef={timelineRef} />
     );
   }
   return (
     <div className="Timeline" ref={timelineRef}>
-      <LineTime settings={settings} />
+      <LineTime />
       {rotationGrids}
     </div>
   );

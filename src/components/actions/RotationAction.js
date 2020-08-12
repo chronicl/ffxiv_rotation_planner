@@ -1,45 +1,28 @@
 import React from "react";
 import Action from "./Action.js";
+import { useStore } from "../../functions/store";
 
-export default function RotationAction({
-  stateOfRotations,
-  action,
-  index,
-  rotationID,
-  updateRotations,
-  secondToPixel,
-}) {
+export default function RotationAction({ action, index, rotationID }) {
+  const secondToPixel = useStore((state) => state.secondToPixel);
+  const updateRotations = useStore((state) => state.updateRotations);
   const onClick = () => {
     console.log(index);
-    updateRotations({
-      rotationID,
-      type: "remove",
-      remove: { type: "index", index },
-    });
+    updateRotations("remove", { rotationID, type: "index", index });
   };
 
+  const setDragAction = useStore((state) => state.setDragAction);
+  const setRemoveDragActionOnDrop = useStore(
+    (state) => state.setRemoveDragActionOnDrop
+  );
   const onDragStart = () => {
-    updateRotations({
-      type: "setDragging",
-      setDragging: {
-        dragging: true,
-        dragAction: action,
-        removeDragActionOnDrop: rotationID,
-      },
-    });
+    setDragAction(action);
+    setRemoveDragActionOnDrop(rotationID);
   };
 
   const onDragEnd = () => {
-    updateRotations({
-      type: "setDragging",
-      setDragging: { dragging: false },
-    });
-    updateRotations({
-      rotationID,
-      type: "insert",
-      insert: { insertAt: "cleanUp" },
-    });
+    updateRotations("dragEnd");
   };
+
   return (
     <div
       className="RotationAction"

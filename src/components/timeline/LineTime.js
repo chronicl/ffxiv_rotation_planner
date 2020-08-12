@@ -1,31 +1,29 @@
 import React from "react";
 import Tick from "./Tick";
+import { useStore } from "../../functions/store";
 
-export default function LineTime({ settings }) {
-  const fightLengthInPixel =
-    (settings.fightLength + settings.prePullTime) * settings.secondToPixel;
+export default function LineTime() {
+  const fightLengthInPixel = useStore((state) => state.fightLengthInPixel);
+  const startTime = useStore((state) => state.startTime);
+  const fightLength = useStore((state) => state.fightLength);
+
   const ticks = [];
-  for (let i = settings.prePullTime; i <= settings.fightLength; i++) {
-    ticks.push(
-      <Tick
-        time={i}
-        prePullTime={settings.prePullTime}
-        secondToPixel={settings.secondToPixel}
-      />
-    );
+  for (let i = startTime; i <= fightLength; i++) {
+    ticks.push(<Tick time={i} />);
   }
 
+  const timelineMargin = useStore((state) => state.timelineMargin);
   return (
     <div
       className="timeWrapper"
-      style={{ width: fightLengthInPixel + 2 * settings.timelineMargin }}
+      style={{ width: fightLengthInPixel + 2 * timelineMargin }}
     >
       <div
         className="mainLine"
         style={{
           width: fightLengthInPixel,
-          marginLeft: settings.timelineMargin,
-          marginRight: settings.timelineMargin,
+          marginLeft: timelineMargin,
+          marginRight: timelineMargin,
         }}
       >
         {ticks}

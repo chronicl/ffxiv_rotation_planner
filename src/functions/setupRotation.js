@@ -1,4 +1,4 @@
-export const setRotationWithTimeline = (rotation) => {
+export default (rotation) => {
   if (rotation.length === 0) {
     return [];
   }

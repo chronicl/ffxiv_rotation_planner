@@ -4,8 +4,9 @@ import roleIcons from "../../img/roleIcons/roleIcons";
 import jobIcons from "../../img/jobIcons/jobIcons";
 import { CSSTransition } from "react-transition-group";
 import BackArrow from "./BackArrow";
+import { useStore } from "../../functions/store";
 
-export default function JobSelectMenu({ setCurrentJob, setOpen }) {
+export default function JobSelectMenu({ setOpen }) {
   const [activeMenu, setActiveMenu] = useState("roleMenu");
   const [menuHeight, setMenuHeight] = useState(null);
 
@@ -14,6 +15,7 @@ export default function JobSelectMenu({ setCurrentJob, setOpen }) {
     setMenuHeight(height);
   }
 
+  const setCurrentJob = useStore((state) => state.setCurrentJob);
   return (
     <div className="JobSelectMenu" style={{ height: menuHeight }}>
       <CSSTransition

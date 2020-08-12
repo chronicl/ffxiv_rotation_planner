@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CSSTransition } from "react-transition-group";
 import Info from "../Info";
+import { useStore } from "../../functions/store";
 
-export default function EditSettings({ settings, updateSettings }) {
-  useEffect(() => {});
+export default function EditSettings() {
+  const insertMode = useStore((state) => state.insertMode);
+  const setInsertMode = useStore((state) => state.setInsertMode);
   return (
-    <div className="EditSettings">
+    <div className="InsertMode">
       <Info
-        id="editSettingsInfo"
+        id="insertModeInfo"
         text={[
           "Changes the insert mode for drag and drop.",
           <br />,
@@ -28,15 +30,13 @@ export default function EditSettings({ settings, updateSettings }) {
         <CSSTransition
           classNames="dotAnimation"
           timeout={1000}
-          in={"auto" === settings.editSetting}
+          in={"auto" === insertMode}
           appear
         >
           <div
             id={"auto"}
-            className="editSettingsDot"
-            onClick={() =>
-              updateSettings({ type: "editSetting", editSetting: "auto" })
-            }
+            className="insertModeDot"
+            onClick={() => setInsertMode("auto")}
           />
         </CSSTransition>
         <span style={{ marginLeft: 5, marginRight: 5 }}>auto</span>
@@ -51,17 +51,12 @@ export default function EditSettings({ settings, updateSettings }) {
         <CSSTransition
           classNames="dotAnimation"
           timeout={1000}
-          in={"manual" === settings.editSetting}
+          in={"manual" === insertMode}
         >
           <div
             id={"manual"}
-            className="editSettingsDot"
-            onClick={() =>
-              updateSettings({
-                type: "editSetting",
-                editSetting: "manual",
-              })
-            }
+            className="insertModeDot"
+            onClick={() => setInsertMode("manual")}
           />
         </CSSTransition>
         <span style={{ marginLeft: 5, marginRight: 5 }}>manual</span>
@@ -76,14 +71,12 @@ export default function EditSettings({ settings, updateSettings }) {
         <CSSTransition
           classNames="dotAnimation"
           timeout={1000}
-          in={"move" === settings.editSetting}
+          in={"move" === insertMode}
         >
           <div
             id={"move"}
-            className="editSettingsDot"
-            onClick={() =>
-              updateSettings({ type: "editSetting", editSetting: "move" })
-            }
+            className="insertModeDot"
+            onClick={() => setInsertMode("move")}
           />
         </CSSTransition>
         <span style={{ marginLeft: 5, marginRight: 5 }}>move</span>

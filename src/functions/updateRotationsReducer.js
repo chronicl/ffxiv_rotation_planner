@@ -1,4 +1,4 @@
-import { setRotationWithTimeline } from "./setupRotation";
+import setTimeline from "./setupRotation";
 import { v4 as uuid } from "uuid";
 
 // updates is an object with the attributes rotationID, type and depending on the type one further attribute may be needed.
@@ -49,9 +49,7 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
           }
         }
         if (stateOfRotations.removeDragActionOnDrop !== id) {
-          newRotations[
-            stateOfRotations.removeDragActionOnDrop
-          ] = setRotationWithTimeline(
+          newRotations[stateOfRotations.removeDragActionOnDrop] = setTimeline(
             newRotations[stateOfRotations.removeDragActionOnDrop]
           );
         }
@@ -60,14 +58,11 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
       switch (updates.insert.insertAt) {
         case "index":
           if (updates.insert.index === "end") {
-            newRotations[id] = setRotationWithTimeline([
-              ...rotation,
-              newAction,
-            ]);
+            newRotations[id] = setTimeline([...rotation, newAction]);
             newStateOfRotations["rotations"] = newRotations;
             break;
           }
-          newRotations[id] = setRotationWithTimeline([
+          newRotations[id] = setTimeline([
             ...rotation.slice(0, updates.insert.index),
             newAction,
             ...rotation.slice(updates.insert.index),
@@ -87,7 +82,7 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
               updates.insert.pixel <
               action.timePos * updates.insert.secondToPixel
             ) {
-              newRotations[id] = setRotationWithTimeline([
+              newRotations[id] = setTimeline([
                 ...rotation.slice(0, index),
                 newAction,
                 ...rotation.slice(index),
@@ -97,7 +92,7 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
               return newStateOfRotations;
             }
           }
-          newRotations[id] = setRotationWithTimeline([...rotation, newAction]);
+          newRotations[id] = setTimeline([...rotation, newAction]);
           newStateOfRotations["rotations"] = newRotations;
           break;
 
@@ -114,7 +109,7 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
     case "remove":
       switch (updates.remove.type) {
         case "index":
-          newRotations[id] = setRotationWithTimeline([
+          newRotations[id] = setTimeline([
             ...rotation.slice(0, updates.remove.index),
             ...rotation.slice(updates.remove.index + 1),
           ]);
@@ -124,7 +119,7 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
         case "id":
           for (const [index, action] of newRotations[id].entries()) {
             if (action.id === updates.remove.id) {
-              newRotations[id] = setRotationWithTimeline([
+              newRotations[id] = setTimeline([
                 ...rotation.slice(0, index),
                 ...rotation.slice(index + 1),
               ]);
@@ -161,9 +156,6 @@ export const updateRotationsReducer = (stateOfRotations, updates) => {
     case "focusRotation":
       newStateOfRotations["focusedRotationID"] = updates.rotationID;
       return newStateOfRotations;
-
-    case "fightLength":
-      break;
 
     case "setDragging":
       if (typeof updates.setDragging.dragging !== "undefined") {
