@@ -1,6 +1,26 @@
 import create from "zustand";
 import setTimeline from "./setupRotation";
 import { v4 as uuid } from "uuid";
+import firebase from "../firebase";
+
+const db = firebase.firestore();
+
+const objToArray = (obj) => {
+  const arr = Array(obj.length);
+  for (const [index, value] of Object.entries(obj)) {
+    arr[parseInt(index)] = value;
+  }
+  return arr;
+};
+
+const arrayToObj = (arr) => {
+  const obj = {};
+  console.log(arr);
+  for (const [index, value] of arr.entries()) {
+    obj[index] = value;
+  }
+  return obj;
+};
 
 const insertAtIndex = (rotation, action, index) => [
   ...rotation.slice(0, index),
@@ -167,9 +187,27 @@ const [useStore, { subscribe, getState }] = create((set) => ({
   focusedRotationID: 0,
   setFocusedRotationID: (id) => set((state) => ({ focusedRotationID: id })),
   rotations: [[]],
+  setRotations: (rotations) => set((state) => ({ rotations })),
   updateRotations: (type, payload) =>
-    set((state) => updateRotations(state, type, payload)),
+    set((state) => {
+      const newRotations = updateRotations(state, type, payload)["rotations"];
+      if (state.online) {
+        db.collection("rotations")
+          .doc("rotations1")
+          .set(arrayToObj(newRotations));
+      }
+      return newRotations;
+    }),
 
+  online: false,
+  setOnline: (on) =>
+    set((state) => {
+      if (on) {
+        return { online: on };
+      } else {
+        return { online: on, rotations: [[]] };
+      }
+    }),
   // DND
   dragAction: null,
   setDragAction: (action) => set((state) => ({ dragAction: action })),
@@ -178,4 +216,4 @@ const [useStore, { subscribe, getState }] = create((set) => ({
     set((state) => ({ removeDragActionOnDrop: rotationID })),
 }));
 
-export { useStore, subscribe, getState };
+export { useStore, subscribe, getState, objToArray, arrayToObj };

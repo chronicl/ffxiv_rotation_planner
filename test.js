@@ -1,16 +1,6 @@
-const ha = { ha: "hello", wa: "nice" };
-if (true) {
-  var hello = "nice";
+const ha = { 1: "b", 0: "a", 2: "c" };
+const haOb = Array(ha.length);
+for (const [index, value] of Object.entries(ha)) {
+  haOb[parseInt(index)] = value;
 }
-const ids = [...Array(100)].map((v, i) => i);
-const what = {
-  ...ids.reduce((acc, id) => ({ ...acc, [id]: Math.random() }), 0),
-};
-const haha = [1, 2, 3, 4, 5];
-const insertAtIndex = (rotation, action, index) => [
-  ...rotation.slice(0, index),
-  action,
-  ...rotation.slice(index),
-];
-
-console.log(insertAtIndex(haha, null, 2));
+console.log(haOb);

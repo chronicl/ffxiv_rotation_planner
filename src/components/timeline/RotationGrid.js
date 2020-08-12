@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import RotationAction from "../actions/RotationAction.js";
 import { useStore } from "../../functions/store";
+import firebase from "../../firebase";
+import { objToArray } from "../../functions/store";
 
 // rotation is list of Actions
 export default function RotationGrid({ rotationID, timelineRef }) {
@@ -49,8 +51,24 @@ export default function RotationGrid({ rotationID, timelineRef }) {
     }
   };
 
+  const online = useStore((state) => state.online);
+  const setRotations = useStore((state) => state.setRotations);
+  useEffect(() => {
+    if (online) {
+      const db = firebase.firestore();
+      const unsub = db
+        .collection("rotations")
+        .doc("rotations1")
+        .onSnapshot((doc) => {
+          setRotations(objToArray(doc.data()));
+        });
+      return unsub;
+    }
+  }, [online]);
+
   const rotationJSX = [];
   const rotations = useStore((state) => state.rotations);
+  console.log(rotations);
   for (const [index, action] of rotations[rotationID].entries()) {
     rotationJSX.push(
       <RotationAction action={action} index={index} rotationID={rotationID} />

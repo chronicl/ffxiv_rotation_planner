@@ -381,6 +381,19 @@ body {
   background-color: #3f4146;
 }
 
+.Online {
+  position: relative;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  border-radius: 10px;
+  z-index: 1;
+  height: 95px;
+  justify-content: center;
+  background-color: #3f4146;
+}
+
 .InsertTime {
   position: absolute;
   border-radius: 5px;

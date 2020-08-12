@@ -6,6 +6,7 @@ import ActionSelect from "./components/ActionSelect.js";
 import Timeline from "./components/timeline/Timeline.js";
 import MinusPlusButtons from "./components/timeline/MinusPlusButtons.js";
 import Settings from "./components/settings/Settings";
+import TestFirebase from "./components/TestFirebase";
 
 // functions
 import { updateRotationsReducer } from "./functions/updateRotationsReducer";
