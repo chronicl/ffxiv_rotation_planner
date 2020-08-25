@@ -17,6 +17,7 @@ export default function RotationGrid({ rotationID, timelineRef }) {
   const dragAction = useStore((state) => state.dragAction);
   const insertMode = useStore((state) => state.insertMode);
   const onDrop = (e) => {
+    e.preventDefault();
     updateRotations("insert", {
       rotationID,
       insertAt: "pixel",

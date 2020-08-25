@@ -190,11 +190,11 @@ const [useStore, { subscribe, getState }] = create((set) => ({
   setRotations: (rotations) => set((state) => ({ rotations })),
   updateRotations: (type, payload) =>
     set((state) => {
-      const newRotations = updateRotations(state, type, payload)["rotations"];
+      const newRotations = updateRotations(state, type, payload);
       if (state.online) {
         db.collection("rotations")
           .doc("rotations1")
-          .set(arrayToObj(newRotations));
+          .set(arrayToObj(newRotations["rotations"]));
       }
       return newRotations;
     }),

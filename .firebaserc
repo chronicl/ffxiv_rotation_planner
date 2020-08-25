@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ffrotations"
+  },
+  "targets": {
+    "ffrotations": {
+      "hosting": {
+        "ffrotations": [
+          "ffrotations.com"
+        ]
+      }
+    }
   }
 }
